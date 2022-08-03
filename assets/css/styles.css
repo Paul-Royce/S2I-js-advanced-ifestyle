@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header {
+    color: #ffffff;
+    background-image: url("../img/536764_skyscraper-at-night-wallpaper_2048x1142_h.jpg");
+    background-color: rgba(0, 0, 0, 0.24);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position-x: 30%;
+    background-position-y: 25%;
+    height: 35vh;
+    margin-bottom: 6rem;
+    animation-name: move-bg;
+    animation-duration: 100s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes move-bg {
+    from {
+        background-position-y: 25%;
+    }
+
+    to {
+        background-position-y: 80%;
+    }
+}
+
+h1 {
+    letter-spacing: 2.5px;
+    line-height: 50px;
+    font-weight: 900;
+    padding-top: 3rem;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+main>h2 {
+    margin-bottom: 3rem;
+}
+
+#city-name {
+    color: aqua;
+}
+
+main {
+    text-align: center;
+}
+
+.interaction-ctnr {
+    margin-bottom: 4rem;
+}
+
+input {
+    font-size: 1.2rem;
+    height: 40px;
+    width: 380px;
+    border-radius: 30px;
+    padding-left: 1rem;
+    margin-right: 1.2rem;
+}
+
+#button {
+    color: #ffffff;
+    background-color: #0734fd;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    padding: 0.4rem;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#button:hover {
+    background-color: #4b66dd;
+}
+
+
+.rankings-ctnr {
+    color: black;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 1rem;
+    width: 70%;
+    margin: 0 auto;
+    background-color: rgba(80, 64, 226, 0.589);
+    animation-name: expand-window;
+    animation-duration: 1s;
+}
+
+@keyframes expand-window {
+    from {
+        padding: 0rem;
+        width: 0%;
+    }
+
+    to {
+        padding: 3rem;
+        width: 70%;
+    }
+}
+
+ul {
+    opacity: 0;
+    animation-name: appear;
+    animation-delay: 1s;
+    animation-duration: 4s;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.progress {
+    /* bootstrap class to control the height of the progress bar */
+    height: 13px;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+}
+
+.hide {
+    display: none;
+}
+
+p {
+    font-size: 18px;
+    margin: 0.6rem;
+}
+
+
+.btn {
+    width: 900px;
+}
+
+#city-image {
+    background-color: rgb(65, 65, 66);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+#summary {
+    background-color: rgba(0, 0, 0, 0.404);
+    font-size: 1.4rem;
+    margin: auto 7rem;
+    padding: 5rem 1rem;
+    border-radius: 0 0 10px 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    header {
+        margin-bottom: 4rem;
+    }
+
+    .rankings-ctnr {
+        padding: 1rem;
+        padding-right: 2rem;
+        border-radius: 0rem;
+        width: 100%;
+    }
+
+    .interaction-ctnr {
+        text-align: center;
+    }
+
+    /* for aligning the input inthe center */
+
+    input {
+        width: 90%;
+        margin-right: 0.2rem;
+    }
+
+    #button {
+        color: #ffffff;
+        background-color: #0734fd;
+        margin-top: 1rem;
+        padding: 0.4rem;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    #city-image {
+        margin: 0;
+        margin-bottom: 4rem;
+    }
+
+    #summary {
+        margin: auto;
+        padding: 5rem 1rem;
+        border-radius: 0 0 10px 10px;
+    }
+
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>S2I JS Advanced</title>
+</head>
+
+<body>
+
+
+    <header>
+        <h1>
+            Type in a city <br>
+            and discover <br>
+            his rankings
+        </h1>
+    </header>
+    <main>
+        <div class="interaction-ctnr">
+            <input type="text" placeholder="es. milan" id="city-input">
+            <button id="button">SEARCH</button>
+        </div>
+        <!-- CREARE UNA LISTA NON ORDINATA PER INSERIRCI TUTTI I DATI  -->
+
+
+        <div class="rankings-ctnr">
+            <!-- LOADING SPINNER -->
+            <div class="spinner-border text-light hide" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <!-- DATA CONTAINERS -->
+            <h2 id="city-name"></h2>
+            <ul>
+                <!-- HOUSING -->
+                <li>
+                    <label>
+                        <h2>Housing</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="housing-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- COST OF LIVING -->
+                <li>
+                    <label>
+                        <h2>Cost of living</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="living-costs-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- STARTUPS -->
+                <li>
+                    <label>
+                        <h2>Startups</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="startups-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- VENTURE CAPITAL -->
+                <li>
+                    <label>
+                        <h2>Venture Capital</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="45"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- TRAVEL CONNECTIVITY -->
+                <li>
+                    <label>
+                        <h2>Travel Connectivity</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="connectivity-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- COMMUTE -->
+                <li>
+                    <label>
+                        <h2>Commute</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="commute-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- BUSINESS FREEDOM -->
+                <li>
+                    <label>
+                        <h2>Business Freedom</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="business-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- SAFETY -->
+                <li>
+                    <label>
+                        <h2>Safety</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="safety-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- HEALTHCARE -->
+                <li>
+                    <label>
+                        <h2>Healthcare</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="healthcare-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- EDUCATION -->
+                <li>
+                    <label>
+                        <h2>Education</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="education-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- ENVIROMENTAL QUALITY -->
+                <li>
+                    <label>
+                        <h2>Enviromental Quality</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="enviromental-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- ECONOMY -->
+                <li>
+                    <label>
+                        <h2>Economy</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="economy-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- TAXATION -->
+                <li>
+                    <label>
+                        <h2>Taxation</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="taxation-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- INTERNET ACCESS -->
+                <li>
+                    <label>
+                        <h2>Internet</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="internet-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- LEISURE AND CULTURE -->
+                <li>
+                    <label>
+                        <h2>Leisure & Culture</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="leisure-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- TOLERANCE -->
+                <li>
+                    <label>
+                        <h2>Tolerance</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="tolerance-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+                <!-- OUTDOORS -->
+                <li>
+                    <label>
+                        <h2>Outdoors</h2>
+                    </label>
+                </li>
+                <li>
+                    <div class="progress">
+                        <div class="progress-bar" id="outdoors-res" role="progressbar" style="width: 25%"
+                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CITY SUMMARY AND IMAGE -->
+        <div id="city-image">
+            <p id="summary">
+                <!-- api content -->
+            </p>
+            <!-- toggling spinner: default state hidden, due to the css class "hide"
+                  The purpose of thr CSS "spin-one" class is just to distingush it from the other spinner tha's in in the
+                  upper part of this code  
+             -->
+            <div class="spinner-border text-light spin-one hide" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="./dist/app.js"></script>
+</body>
+
+</html>
