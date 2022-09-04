@@ -9,35 +9,39 @@ setTimeout(() => { /* the purpose of this setTimeout is to make permanent the op
     ul.style.opacity = 1;
 }, 1500);
 
-let errorCount = 0; /* this line is to count the amount of error output, to give the user some hint later in the error handling section */
+const processinput = userInput => {
+    const value = userInput.toLowerCase();
+    const splitValue = value.split(' ');
+    const joinValue = splitValue.join('-');
+    return joinValue;
+}
 
 // CALL THE TELEPORT API
 async function giveOutput() {
+
     // clear all the childNodes in ul, they were there only as a placeholder, not showing any relevant data
     ul.innerHTML = "";
     let spinner = document.querySelector('.spinner-border');
     // SHOW THE SPINNER
     spinner.classList.toggle('hide');
+    console.log(processinput(inputCity.value));
+
+    console.log(processinput(inputCity.value));
     try {
-        const response = await fetch(`https://api.teleport.org/api/urban_areas/slug:${inputCity.value}/scores/`);
+        const response = await fetch(`https://api.teleport.org/api/urban_areas/slug:${processinput(inputCity.value)}/scores/`);
         const result = await response.json();
 
         // show the value of the inputfield in the h2 in uppercase
         cityName.textContent = inputCity.value.toUpperCase(0);
+
         // create an array called data and put in all the scores results
         let data = get(result, "categories", "");
         data.forEach(element => {
-            // create a list item to contain the title
             const list = document.createElement('li');
-            // create the HTML element to host the title
             const title = document.createElement('h2');
-            // set each element of the Array that has the key "name" has the textContent of the title 
             title.textContent = get(element, "name", "");
-            // set each element of the Array that has the key "color" has the color of the title 
             title.style.color = get(element, "color", "");;
-            // Nest eacch title variable inside the list variable
             list.append(title);
-            // Nest each list variable inside the ul HTML element
             ul.append(list);
             // create a list container for the progress bar, then nest in it (using a shorthand methodology) the Bootstrap progress bar
             const progressBarContainer = document.createElement('li');
@@ -58,14 +62,11 @@ async function giveOutput() {
         spinner.classList.toggle('hide');
         // hoist up the function getImage
         getImage();
-    } catch (e) { /* handle eventual errors */
-        // create a paragraph that comunicates the user that something went wrong
-        errorCount++;
+    } catch (e) {
+        spinner.classList.toggle('hide');
         const errParagraph = document.createElement('h5');
-        errorCount >= 2 ? errParagraph.textContent = 'If the name contains spaces try using - instead' : errParagraph.textContent = 'Something went wrong, try again...';
-        errParagraph.style.color = 'red';
-        errParagraph.style.textAlign = 'center';
-        errParagraph.style.marginTop = '2rem';
+        errParagraph.className = 'error-label';
+        errParagraph.textContent = `"${inputCity.value}" is not in the database`;
         document.querySelector('.interaction-ctnr').append(errParagraph);
         // CHANGE THE IMAGE CONTAINER COLOR TO GREY
         document.getElementById('city-image').style.backgroundColor = 'grey';
